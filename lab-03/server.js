@@ -7,6 +7,23 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
+app.get("/", (request, response) => {
+  response.json({
+    message: "Welcome to the Lab 3 Books REST API",
+    project: "Book Management System",
+    version: "1.0.0",
+    author: "Sneha Kasula",
+    description: "A REST API built using Node.js, Express and SQLite to manage book records.",
+    endpoints: {
+      getAllBooks: "GET /books",
+      getBookById: "GET /books/:bookId",
+      addBook: "POST /books",
+      updateBook: "PUT /books/:bookId",
+      deleteBook: "DELETE /books/:bookId"
+    }
+  });
+});
+
 const dbPath = path.join(__dirname, "database", "books.db");
 
 let db = null;
